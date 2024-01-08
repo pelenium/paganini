@@ -11,4 +11,6 @@ CLI for quick initialization of the project
 
 Init new project
 
-`paga init -tn "go-web-gin" -pn "my-awesome-web-app"`
+```shell
+paga init -tn "go-web-gin" -pn "my-awesome-web-app"
+```
