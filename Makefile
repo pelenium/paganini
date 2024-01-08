@@ -1,5 +1,5 @@
 build:
-	go build -o main.exe
+	go build -o paga.exe
 
 run: build
-	./main.exe
+	./paga.exe
