@@ -5,15 +5,16 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 )
 
 /*
-	tn - template name
-	pn - project name
-	tf - template folder
-*/
+*	tn - template name
+*	pn - project name
+*	tf - template folder
+ */
 
-var basicJson string = ``
+var basicJson string = `{"template-folder": ""}`
 
 func main() {
 	var (
@@ -29,7 +30,15 @@ func main() {
 	if *tn != "" {
 	rep:
 		var file *os.File
-		path := "settings.json"
+		dir, err := os.Executable()
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(dir)
+		dir = dir[0:max(strings.LastIndex(dir, `\`), strings.LastIndex(dir, `/`))];		
+		path := dir + `\settings.json`
+		fmt.Println(path)
+
 		bytes, err := os.ReadFile(path)
 		if err != nil {
 			file, err = os.Create(path)
